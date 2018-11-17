@@ -39,9 +39,16 @@ print(reg_stack.get())
 print(reg_stack.size())
 
 
+plnc_stack = PlnCalcStack()
+plnc_stack.load([1,2,3,4])
+print(plnc_stack.get())
+print(plnc_stack.size())
 
 
-
+plnc_stack.repush_last()
+print(plnc_stack.get())
+print(plnc_stack.size())
+print(plnc_stack._Stack__items)
 
 #######################################
 #for item in reg_stack.items:

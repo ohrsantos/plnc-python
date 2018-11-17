@@ -8,9 +8,6 @@ class Stack:
     def push(self, item):
         self.__items.append(item)
 
-    def repush_last(self):
-        self.__items.append(self.__items[len(self.__items)-1])
-
     def pop(self):
         return self.__items.pop()
 
