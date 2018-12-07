@@ -1,25 +1,25 @@
-class Stack:
+class Stack():
     def __init__(self):
-        self.__items = []
+        self.items = []
 
     def isEmpty(self):
-        return self.__items == []
+        return self.items == []
 
     def push(self, item):
-        self.__items.append(item)
+        self.items.append(item)
 
     def pop(self):
-        return self.__items.pop()
+        return self.items.pop()
 
     def last(self):
-        return self.__items[len(self.__items)-1]
+        return self.items[len(self.items)-1]
 
     def size(self):
-        return len(self.__items)
+        return len(self.items)
 
     def load(self, iterable):
         for item in iterable:
-            self.__items.append(item)
+            self.items.append(item)
 
     def get(self):
-        return [self.__items]
+        return [self.items]
