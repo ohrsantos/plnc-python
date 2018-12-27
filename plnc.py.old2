@@ -13,34 +13,13 @@ print(__name__)
 
 
 calc = PlnCalc()
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
 calc.stack.load([1,2,3,4])
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
-calc.enter(7)
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
-calc.sum(-3)
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
-calc.sum('EMPTY')
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
-
-exit()
+calc.stack.push(3)
+print(calc.stack.get())
+print(calc.stack.size())
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+calc.repush_last()
 print(calc.stack.get())
 print(calc.stack.size())
 print("\033[38;5;1mThis is a text!\033[0m")
