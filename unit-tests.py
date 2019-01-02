@@ -10,31 +10,26 @@ from pln_calc import PlnCalc
 import unittest
 
 
-class LoadUnitTest(unittest.TestCase):
-    def setUp(self):
-        self.calc = PlnCalc()
-        self.calc.stack.load([3,-2,-3,5])
-    def runTest(self):
-        self.assertEqual(self.calc.stack.items, [3, -2,-3,5])
-    def tearDown(self):
-        del self.calc
+class TestPlncCalc(unittest.TestCase):
 
-
-class SumUnitTest(unittest.TestCase):
-    def setUp(self):
-        self.calc = PlnCalc()
-        self.calc.stack.load([3,-2,-3,5])
+    calc = PlnCalc()
+    def test_enter(self):
         self.calc.enter(7)
+        self.assertEqual([7], self.calc.stack.items)
+        self.assertEqual(7, self.calc.stack.last())
+    def test_repush_last(self):
+        self.calc.repush_last()
+        self.assertEqual([7, 7], self.calc.stack.items)
+        self.assertEqual(7, self.calc.stack.last())
+    def test_sum(self):
         self.calc.sum(3)
-        self.calc.sum(-1)
-        self.calc.sum(9)
+        self.assertEqual(10, self.calc.stack.last())
+    def test_empty_sum(self):
         self.calc.sum('EMPTY')
-        self.calc.sum('EMPTY')
-        self.calc.sum('EMPTY')
-    def runTest(self):
-        self.assertEqual(self.calc.stack.last(), 18)
-    def tearDown(self):
-        del self.calc
+        self.assertEqual(17, self.calc.stack.last())
+
+    #def tearDown(self):
+        #del self.calc
 
 
 if __name__ == '__main__':

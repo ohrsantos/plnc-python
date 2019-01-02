@@ -12,7 +12,7 @@ class Stack():
         return self.items.pop()
 
     def last(self):
-        return self.items[len(self.items)-1]
+        return self.items[len(self.items) - 1]
 
     def size(self):
         return len(self.items)
