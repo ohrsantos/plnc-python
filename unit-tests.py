@@ -7,26 +7,31 @@ init(autoreset=True)
 from stack import Stack
 from pln_calc import PlnCalc
 
-import unittest
+from unittest import TestCase
 
 
-class TestPlncCalc(unittest.TestCase):
+calc = PlnCalc()
 
-    calc = PlnCalc()
+class TestPlncCalc(TestCase):
+
+    #def setUp(self):
+
     def test_enter(self):
-        self.calc.enter(7)
-        self.assertEqual([7], self.calc.stack.items)
-        self.assertEqual(7, self.calc.stack.last())
-    def test_repush_last(self):
-        self.calc.repush_last()
-        self.assertEqual([7, 7], self.calc.stack.items)
-        self.assertEqual(7, self.calc.stack.last())
+        calc.enter(7)
+        self.assertEqual([7], calc.stack.items)
+        self.assertEqual(7, calc.stack.last())
     def test_sum(self):
-        self.calc.sum(3)
-        self.assertEqual(10, self.calc.stack.last())
-    def test_empty_sum(self):
-        self.calc.sum('EMPTY')
-        self.assertEqual(17, self.calc.stack.last())
+        calc.sum(3)
+        self.assertEqual([10], calc.stack.items)
+        self.assertEqual(10, calc.stack.last())
+    def test_repush_last(self):
+        calc.repush_last()
+        self.assertEqual([10, 10], calc.stack.items)
+        #self.assertEqual(10, calc.stack.last())
+    #def test_empty_sum(self):
+        #calc.sum('EMPTY')
+        #self.assertEqual([20], calc.stack.items)
+        #self.assertEqual(20, calc.stack.last())
 
     #def tearDown(self):
         #del self.calc

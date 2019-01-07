@@ -7,20 +7,33 @@ init(autoreset=True)
 from stack import Stack
 from pln_calc import PlnCalc
 
-print(__name__)
 
+
+def assert_equal(first, second):
+    if first == second:
+        cprint('[OK]', 'green')
+    else:
+        print(Fore.RED + '[FAILE]' + Fore.RESET + '===> expected: ' + str(first) + ', but got: ' + str(second))
 
 
 
 calc = PlnCalc()
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
+
+
 calc.enter(7)
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
+assert_equal([7], calc.stack.items)
+
 calc.sum(3)
+assert_equal([10], calc.stack.items)
+
 calc.repush_last()
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
+assert_equal([10, 10], calc.stack.items)
+
 calc.sum('EMPTY')
-print("===>> ", calc.stack.get(),  "   ", calc.stack.size())
+assert_equal([20], calc.stack.items)
+
+calc.repush_last()
+assert_equal([20, 20], calc.stack.items)
 
 exit()
 
